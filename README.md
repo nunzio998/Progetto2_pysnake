@@ -71,7 +71,7 @@ L'attributo `field_in` indica il file contenente il campo di gioco iniziale. L'e
 Obiettivo del progetto è implementare la funzione
 
 ```
-def play(game_file: string) -> int:
+def play(game_file: str) -> int:
   pass
 ```
 
