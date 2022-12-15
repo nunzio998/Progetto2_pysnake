@@ -18,9 +18,7 @@ Valgono le seguenti regole di gioco:
 * oltrepassando un bordo del campo, il serpente riappare dal bordo opposto;
 * quando il serpente “mangia” cibo il suo corpo cresce di un quadratino;
 * quando il serpente si scontra con un ostacolo, il gioco termina;
-* quando il serpente si scontra contro la sua stessa coda, il gioco termina.
-
-Quando il serpente tenta di attraversare la sua coda in direzione diagonale, il gioco termina ugualmente, come rappresentato nella figura seguente.
+* quando il serpente si scontra contro la sua stessa coda, il gioco termina. Ciò vale anche quando il serpente tenta di attraversare la sua coda in direzione diagonale, come rappresentato nella figura seguente.
 
 ![Crossing attempt](cross.jpg "Crossing attempt")
 
