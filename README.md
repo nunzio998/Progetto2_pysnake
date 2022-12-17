@@ -82,5 +82,3 @@ I quadratini del campo di gioco sono colorati secondo la seguente tabella.
 * ostacolo = RGB(255, 128, 0)
 * corpo = RGB(0, 255, 0)
 * scia = RGB(128, 128, 128)
-
-Le funzioni di caricamento e salvataggio di immagini png vengono fornite allo studente già implementate.
