@@ -10,11 +10,11 @@ Valgono le seguenti regole di gioco:
     * N – Nord;
     * S – Sud;
     * E – Est;
-    * O – Ovest;
+    * W – Ovest;
     * NE – Nord-Est;
-    * NO – Nord-Ovest;
+    * NW – Nord-Ovest;
     * SE – Sud-Est;
-    * SO – Sud-Ovest;
+    * SW – Sud-Ovest;
 * oltrepassando un bordo del campo, il serpente riappare dal bordo opposto;
 * quando il serpente “mangia” cibo il suo corpo cresce di un quadratino;
 * quando il serpente si scontra con un ostacolo, il gioco termina;
@@ -57,7 +57,7 @@ Una partita è descritta da un file Json. Di seguito ve ne è un esempio.
 {
   "field_in": "field_in_01.png",
   "start": [5, 3],
-  "moves": "N N N E SE SE SE E E N N N O O O O O O O S S S S S S SO SO SO",
+  "moves": "N N N E SE SE SE E E N N N W W W W W W W S S S S S S SW SW SW",
   "field_out": "field_out_01.png"
 }
 ```
