@@ -37,7 +37,7 @@ Nel caso di file Json, la rappresentazione può essere simile alla seguente.
   "food": [
     [0, 4],
     [2, 2],
-    [3, 1]
+    [3, 2]
   ],
   "blocks": [
     [0, 2],
@@ -77,8 +77,8 @@ che accetta in ingresso il nome di un file di gioco e restituisce in uscita la d
 
 I quadratini del campo di gioco sono colorati secondo la seguente tabella.
 
-* vuoto = RGB(0, 0, 0)
-* cibo = RGB(0, 255, 0)
-* ostacolo = RGB(255, 128, 0)
-* corpo = RGB(0, 255, 0)
-* scia = RGB(128, 128, 128)
+* vuoto - nero = RGB(0, 0, 0)
+* cibo - arancio = RGB(255, 128, 0)
+* ostacolo - rosso = RGB(255, 0, 0)
+* corpo - verde = RGB(0, 255, 0)
+* scia -grigio = RGB(128, 128, 128)
