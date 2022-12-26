@@ -1,0 +1,6 @@
+{
+    "field_in": "data/field_02.json",
+    "start": [ 10, 10 ],
+    "moves": "NW NW W W W W W W W SW S W W W W W N N E E E E E E E E E E E E E E E E E E E E E E E E E E E SE E E",
+    "field_out": "data/final_field_02.png"
+}

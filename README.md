@@ -73,7 +73,7 @@ def play(game_file: str) -> int:
   pass
 ```
 
-che accetta in ingresso il nome di un file di gioco e restituisce in uscita la dimensione finale del corpo del serpente al termine del gioco. Come effetto collaterale, la funzione deve salvare su disco il file con lo stato finale del campo di gioco. Oltre agli ostacoli ed al cibo residuo, il campo di gioco contiene anche il corpo del serpente e, in un diverso colore, tutta la scia lasciata dal serpente durante la partita.
+che accetta in ingresso il nome di un file di gioco e restituisce in uscita la dimensione finale del corpo del serpente al termine del gioco. Come effetto collaterale, la funzione deve salvare su disco il file con lo stato finale del campo di gioco. Oltre agli ostacoli ed al cibo residuo, il campo di gioco contiene anche il corpo del serpente e, in un diverso colore, tutta la scia lasciata dal serpente durante la partita. Tutto il codice realizzato dallo studente deve essere contenuto nell'unico file `main.py`.
 
 I quadratini del campo di gioco sono colorati secondo la seguente tabella.
 
@@ -81,4 +81,4 @@ I quadratini del campo di gioco sono colorati secondo la seguente tabella.
 * cibo - arancio = RGB(255, 128, 0)
 * ostacolo - rosso = RGB(255, 0, 0)
 * corpo - verde = RGB(0, 255, 0)
-* scia -grigio = RGB(128, 128, 128)
+* scia - grigio = RGB(128, 128, 128)

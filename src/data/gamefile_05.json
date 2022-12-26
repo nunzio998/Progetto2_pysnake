@@ -1,0 +1,6 @@
+{
+    "field_in": "data/field_05.json",
+    "start": [ 38, 51 ],
+    "moves": "N N N N N N W W W W W W W W W N N N E E E E E E E E E E E S S S S S SE SE E SE S S S S SE S E E SE SE SE SE E E E E E E E E E N N N N N NW NW NW NW NW NW N E E E E E E E E E E E S S S S S S S S S S E E E S E E E E E S S S S E E E N N N N N E N N E E E E E E E N N N N N N N W W W W W W N N N N N N E E E SE E NE N N N N N NW N N N N N E E E N N N N N E E E E S S S S S S S W W W W W W W W W W W W W W W W W W NW NW NW N N N NE NE NE E E E E",
+    "field_out": "data/final_field_05.png"
+}

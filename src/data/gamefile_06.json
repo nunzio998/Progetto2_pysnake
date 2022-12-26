@@ -1,0 +1,6 @@
+{
+    "field_in": "data/field_06.png",
+    "start": [ 28, 26 ],
+    "moves": "W W W W W W W NW NW NW N N N N N N W W N N E E E E E N N N N N N N N E E E E E E N N N W W W W W W W W W W N N E E E E E E E E E E E N N W W W W W W S S W W W W W S S S S SW SW SW SW SW S E E E E E N NW NW NW NW ",
+    "field_out": "data/final_field_06.png"
+}

@@ -1,0 +1,6 @@
+{
+    "field_in": "data/field_03.png",
+    "start": [ 48, 180 ],
+    "moves": "N N N N W W W W W W W W W W W W W NW W W NW W NW W SW SW SW SW SW W W W W W W W W W NW NW NW NW NW NW N N N NE N N N N N N N N N N N N NW N N N N N N N NW NW NW NW NW NW NW NW NW NW NW S S S S S S S S S S S S E E E SW SW SW SW SW S S S S S S S S S S S S S S S E SW S S S S S S S S S S S S S S S S SW SW SW W W W W W W W W W W W W W W W W S W W W W S W W W W W W W W SW SW SW SW SW SW SW W W S S S S S",
+    "field_out": "data/final_field_03.png"
+}
