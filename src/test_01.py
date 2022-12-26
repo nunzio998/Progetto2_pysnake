@@ -1,3 +1,4 @@
+import time
 import unittest
 import numpy as np
 from PIL import Image
@@ -29,6 +30,31 @@ class TestSuite(TestCase):
 
     def test_08(self):
         self.assertEqual(test_passed("data/gamefile_08.json", "data/final_field_08.png", "data/expected_08.png", 5), "OK")
+
+    def test_09(self):
+        # this is a hidden test
+        pass
+
+    def test_10(self):
+        # this is a hidden test
+        pass
+
+    def test_11(self):
+        # this is a hidden test
+        pass
+
+    def test_12(self):
+        # this is a hidden test
+        pass
+
+    def test_13(self):
+        # this test is aimed at evaluating the time elapsed to execute 10 times the gamefile_04.
+        st = time.time()
+        for i in range(10):
+            play("data/gamefile_04.json")
+        et = time.time()
+        print(f"Elapsed time: { (et - st) * 1000 }ms")
+
 
 def test_passed(game_file: str, final_field: str, expected_field: str, expected_len: int) -> str:
     length = play(game_file)
