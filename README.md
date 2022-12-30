@@ -45,7 +45,7 @@ Nel caso di file Json, la rappresentazione può essere simile alla seguente.
     [3, 1]
   ]
 }
-```	
+```
 
 I quadratini vuoti non sono rappresentati nel file Json.
 

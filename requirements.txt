@@ -1,3 +1,5 @@
 pip~=21.3.1
 wheel~=0.37.1
 setuptools~=60.2.0
+numpy~=1.24.1
+Pillow~=9.3.0
