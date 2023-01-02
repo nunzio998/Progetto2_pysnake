@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 import json
-from PIL import Image
+from PIL import Image, ImageDraw
 
 
 # Crea la classe astratta FileReader con un metodo astratto read_file()
@@ -25,7 +25,25 @@ class JSONFileReader(FileReader):
     def read_file(self):
         with open(self.file_path, 'r') as f:
             data = json.load(f)
-            return data
+        # Prendi le dimensioni dell'immagine dal file JSON
+        rows = data['rows']
+        cols = data['cols']
+
+        # Crea un'immagine nera con le dimensioni specificate
+        image = Image.new('RGB', (cols, rows), (0, 0, 0))
+        draw = ImageDraw.Draw(image)
+
+        # Disegna gli ostacoli come quadrati rossi
+        for block in data['blocks']:
+            row, col = block
+            draw.rectangle((col, row, col + 1, row + 1), fill=(255, 0, 0))
+
+        # Disegna il cibo come quadrati arancioni
+        for food in data['food']:
+            row, col = food
+            draw.rectangle((col, row, col + 1, row + 1), fill=(255, 128, 0))
+
+        return image
 
 
 # Crea la classe di factory FileReaderFactory

@@ -5,13 +5,13 @@ from FileReader import *
 factory = FileReaderFactory()
 
 # Utilizza il metodo create_reader() della factory per ottenere un'istanza della classe concreta appropriata
-reader = factory.create_reader('data/field_03.png')
+reader = factory.create_reader('data/field_02.json')
 
 # Utilizza il metodo read_file() dell'oggetto reader per leggere il contenuto del file
 input_field = reader.read_file()
 
 # Visualizza il campo di partenza
-print(input_field)
+input_field.show()
 
 
 def play(game_file: str) -> int:
