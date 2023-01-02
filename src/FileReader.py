@@ -58,3 +58,9 @@ class FileReaderFactory:
         else:
             raise ValueError('Formato file non supportato')
 
+        """ OPPURE:
+        if file_path.endswith('.png') or file_path.endswith('.json'):
+            return FileReader(file_path)
+        else:
+            raise ValueError('Formato file non supportato')
+        """
