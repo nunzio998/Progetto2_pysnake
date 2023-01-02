@@ -36,12 +36,13 @@ class JSONFileReader(FileReader):
         # Disegna gli ostacoli come quadrati rossi
         for block in data['blocks']:
             row, col = block
-            draw.rectangle((col, row, col + 1, row + 1), fill=(255, 0, 0))
+            draw.rectangle((col, row, col, row), fill=(255, 0, 0))
 
         # Disegna il cibo come quadrati arancioni
         for food in data['food']:
             row, col = food
-            draw.rectangle((col, row, col + 1, row + 1), fill=(255, 128, 0))
+            draw.rectangle((col, row, col, row), fill=(255, 128, 0))
+        image.save('image.png')
 
         return image
 
