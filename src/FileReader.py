@@ -15,7 +15,6 @@ class FileReader(ABC):
 
 # Crea la classe concreta PNGFileReader che estende FileReader e implementa read_file()
 class PNGFileReader(FileReader):
-
     def read_file(self):
         image = Image.open(self.file_path)
         return image
