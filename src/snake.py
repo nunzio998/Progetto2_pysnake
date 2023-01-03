@@ -15,6 +15,8 @@ class Snake:
     def get_posizione(self):
         return [self.pos_x, self.pos_y]
 
+    def increase_lenght(self):
+        self.lenght += 1
     def muovi(self, mossa: str):
         """
         questo metodo consente di effettuare le mosse che il serpente dovrà compiere andando a modificare,
@@ -28,31 +30,23 @@ class Snake:
         """
         match mossa:
             case "N":
-                self.lenght += 1
                 self.pos_x -= 1
             case "S":
-                self.lenght += 1
                 self.pos_x += 1
             case "E":
-                self.lenght += 1
                 self.pos_y += 1
             case "W":
-                self.lenght += 1
                 self.pos_y -= 1
             case "NE":
-                self.lenght += 1
                 self.pos_x -= 1
                 self.pos_y += 1
             case "NW":
-                self.lenght += 1
                 self.pos_x -= 1
                 self.pos_y -= 1
             case "SE":
-                self.lenght += 1
                 self.pos_x += 1
                 self.pos_y += 1
             case "SW":
-                self.lenght += 1
                 self.pos_x += 1
                 self.pos_y -= 1
             case _:
