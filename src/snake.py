@@ -5,15 +5,15 @@ class Snake:
     mosse.
     """
     def __init__(self, x_iniziale, y_iniziale):
-        self.lunghezza = 1
-        self.posizione_x = x_iniziale  # riga
-        self.posizione_y = y_iniziale  # colonna
+        self.lenght = 1
+        self.pos_x = x_iniziale  # riga
+        self.pos_y = y_iniziale  # colonna
 
     def get_lunghezza(self):
-        return self.lunghezza
+        return self.lenght
 
     def get_posizione(self):
-        return [self.posizione_x, self.posizione_y]
+        return [self.pos_x, self.pos_y]
 
     def muovi(self, mossa: str):
         """
@@ -28,32 +28,32 @@ class Snake:
         """
         match mossa:
             case "N":
-                self.lunghezza += 1
-                self.posizione_x -= 1
+                self.lenght += 1
+                self.pos_x -= 1
             case "S":
-                self.lunghezza += 1
-                self.posizione_x += 1
+                self.lenght += 1
+                self.pos_x += 1
             case "E":
-                self.lunghezza += 1
-                self.posizione_y += 1
+                self.lenght += 1
+                self.pos_y += 1
             case "W":
-                self.lunghezza += 1
-                self.posizione_y -= 1
+                self.lenght += 1
+                self.pos_y -= 1
             case "NE":
-                self.lunghezza += 1
-                self.posizione_x -= 1
-                self.posizione_y += 1
+                self.lenght += 1
+                self.pos_x -= 1
+                self.pos_y += 1
             case "NW":
-                self.lunghezza += 1
-                self.posizione_x -= 1
-                self.posizione_y -= 1
+                self.lenght += 1
+                self.pos_x -= 1
+                self.pos_y -= 1
             case "SE":
-                self.lunghezza += 1
-                self.posizione_x += 1
-                self.posizione_y += 1
+                self.lenght += 1
+                self.pos_x += 1
+                self.pos_y += 1
             case "SW":
-                self.lunghezza += 1
-                self.posizione_x += 1
-                self.posizione_y -= 1
+                self.lenght += 1
+                self.pos_x += 1
+                self.pos_y -= 1
             case _:
                 raise ValueError("Il valore inserito non è una mossa possibile.")
