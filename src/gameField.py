@@ -46,8 +46,57 @@ class GameField:
             raise ValueError("La mossa richiesta non è legale.")
 
         # calcola la nuova posizione della testa
+        next_pos = self.snake.get_head()  # [riga,colonna]; righe e colonne crescono da alto-sinista verso basso-destra
+        match move:
+            case "N":
+                next_pos[0] = next_pos[0] - 1 if next_pos[0] >= 1 else self.size_field[0] - 1
+            case "S":
+                next_pos[0] = (next_pos[0] + 1) % self.size_field[0]
+            case "E":
+                next_pos[1] = (next_pos[1] + 1) % self.size_field[1]
+            case "W":
+                next_pos[1] = next_pos[1] - 1 if next_pos[1] >= 1 else self.size_field[1] - 1
+            case "NE":
+                next_pos[0] = next_pos[0] - 1 if next_pos[0] >= 1 else self.size_field[0] - 1
+                next_pos[1] = (next_pos[1] + 1) % self.size_field[1]
+            case "NW":
+                next_pos[0] = next_pos[0] - 1 if next_pos[0] >= 1 else self.size_field[0] - 1
+                next_pos[1] = next_pos[1] - 1 if next_pos[1] >= 1 else self.size_field[1] - 1
+            case "SE":
+                next_pos[0] = (next_pos[0] + 1) % self.size_field[0]
+                next_pos[1] = (next_pos[1] + 1) % self.size_field[1]
+            case "SW":
+                next_pos[0] = (next_pos[0] + 1) % self.size_field[0]
+                next_pos[1] = next_pos[1] - 1 if next_pos[1] >= 1 else self.size_field[1] - 1
 
         # valuta l'esito della mossa e la fa eseguire al serpente
+        if list(self.field[next_pos[0], next_pos[1], :]) in [self.color_dict['vuoto'], self.color_dict['scia']] and \
+                not self.intersects(next_pos, move):
+            left_pos = self.snake.move(next_pos)
+            # colora la testa del serpente
+            self.field[next_pos[0], next_pos[1], :] = self.color_dict['corpo']
+            # colora la posizione lasciata
+            self.field[left_pos[0], left_pos[1], :] = self.color_dict['scia']
+            return True
+        elif list(self.field[next_pos[0], next_pos[1], :]) == self.color_dict['cibo']:
+            # fai fare la mossa al serpente
+            self.snake.eat(next_pos)
+            # colora la testa del serpente
+            self.field[next_pos[0], next_pos[1], :] = self.color_dict['corpo']
+            return True
+        else:
+            return False
+
+    def intersects(self, next_pos: list, move: str) -> bool:
+        if move in ["N", "S", "E", "W"]:
+            return False
+        head = np.array(self.snake.get_head())
+        delta = np.array(next_pos) - head
+        to_check1 = head + np.array([delta[0], 0])
+        to_check2 = head + np.array([0, delta[1]])
+        if np.array_equal(self.field[to_check1[0], to_check1[1], :], self.color_dict['corpo']) and \
+                np.array_equal(self.field[to_check2[0], to_check2[1], :], self.color_dict['corpo']):
+            return True
         return False
 
     def get_snake_length(self) -> int:
