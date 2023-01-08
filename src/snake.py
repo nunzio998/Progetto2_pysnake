@@ -1,62 +1,47 @@
 class Snake:
     """
-    Classe che definisce il serpente. Gli attributi di un'istanza di serpente sono la lunghezza (len) e la posizione
-    della testa del serpente nel campo da gioco. Quest'ultima è rappresentata tramite un valore per la riga (row) e
-    un valore per la colonna (col); le righe e le colonne sono crescenti dalle posizioni alto-sinistra verso quelle
-    basso-destra del campo da gioco; in questo modo la prima cella in alto a sinistra avrà valori: row=0 col=0.
-    Vengono implementati i metodi di get degli attributi e il metodo che consente al serpente di verificare la legalità
-    delle mosse ed effettuarle.
+    Classe che definisce il serpente.
+
+    Attributi:
+    Gli attributi dell'istanza sono la sua lunghezza (len) e la posizione di tutte
+    le celle del campo su cui si trova il serpente. Le posizioni sono rappresentata tramite una coda (queue) di tipo
+    [[r1,c1],[r2,c2],...,[rf,cf]], in cui ogni elemento è una lista [r,c] che contine la riga e la colonna della
+    cella; in particolare [r1,c1] e [rf,cf] sono le posizioni delle celle relative alla testa e alla coda del sepente.
+
+    Metodi:
+    Sono implementati i metodi di get della lunghezza e della poeisione della testa del serpente, e i metodi che
+    consentono al serpente di muoversi e di mangiare.
     """
-    def __init__(self, pos_iniziale):
+
+    def __init__(self, init_pos: list):
         """
         Istanzia il serpente.
-        :param pos_iniziale: list: lista [riga,colonna] che indica la posizione iniziale della testa del serpente
+        :param init_pos: list: lista [riga,colonna] che indica la posizione iniziale della testa del serpente
         """
         self.len = 1
-        self.row = pos_iniziale[0]  # riga
-        self.col = pos_iniziale[1]  # colonna
+        self.queue = [init_pos]  # [[r1 c1],[r2 c2],...]
 
-    def get_lunghezza(self) -> int:
-        return self.len
-
-    def get_posizione(self) -> list:
+    def get_head(self) -> list:
         """
-        Restituisce la posizione della testa del serpente.
+        Restituisce la posizione della cella realtiva alla testa del serpente.
         :return: list: [riga,colonna]
         """
-        return [self.row, self.col]
+        return [self.queue[0][0], self.queue[0][1]]
 
-    def increase_lenght(self):
+    def get_length(self) -> int:
+        return self.len
+
+    def move(self, next: list) -> list:
+        """
+        Metodo che consente al serpente di muoversi (senza mangiare) spostando la testa sulla cella indicata dalla
+        lista in ingresso e spostando ogni suo punto nella posizione occupata dal punto precedente (verso la testa)
+        prima della mossa.
+        :param next: list: posizione della cella in cui si deve muovere la testa del serpente
+        :return: list: posizione della cella su cui era posizionata la coda del serpente prima della mossa
+        """
+        self.queue.insert(0, next)
+        return self.queue.pop()
+
+    def eat(self, next: list):
+        self.queue.insert(0, next)
         self.len += 1
-
-    def muovi(self, mossa: str):
-        """
-        Questo metodo verifica che la mossa richiesta sia legale e, in tal caso, la effettua modificando i valori
-        row e col della testa del serpente. Una mossa è legale se rientra in una tra [N,S,E,W,NE,NW,SE,SW]. Nel caso
-        di una mossa non legale viene sollevata un'eccezione di tipo ValueError.
-        :param mossa: str
-        :return:
-        """
-        match mossa:
-            case "N":
-                self.row -= 1
-            case "S":
-                self.row += 1
-            case "E":
-                self.col += 1
-            case "W":
-                self.col -= 1
-            case "NE":
-                self.row -= 1
-                self.col += 1
-            case "NW":
-                self.row -= 1
-                self.col -= 1
-            case "SE":
-                self.row += 1
-                self.col += 1
-            case "SW":
-                self.row += 1
-                self.col -= 1
-            case _:
-                raise ValueError("Il valore inserito non è una mossa possibile.")
