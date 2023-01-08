@@ -42,7 +42,6 @@ class JSONFileReader(FileReader):
         for food in data['food']:
             row, col = food
             draw.rectangle((col, row, col, row), fill=(255, 128, 0))
-        image.save('image.png')
 
         return image
 
