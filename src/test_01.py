@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 from unittest import TestCase
 
-from main import play
+from main_dev import play
 
 class TestSuite(TestCase):
     def test_01(self):
