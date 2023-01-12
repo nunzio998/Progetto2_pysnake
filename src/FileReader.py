@@ -33,17 +33,15 @@ class JSONFileReader(FileReader):
         image = Image.new('RGB', (cols, rows), (0, 0, 0))
         draw = ImageDraw.Draw(image)
 
-        # Disegna gli ostacoli come quadrati rossi
+        # Disegna gli ostacoli come pixel rossi
         for block in data['blocks']:
             row, col = block
             draw.rectangle((col, row, col, row), fill=(255, 0, 0))
 
-        # Disegna il cibo come quadrati arancioni
+        # Disegna il cibo come pixel arancioni
         for food in data['food']:
             row, col = food
             draw.rectangle((col, row, col, row), fill=(255, 128, 0))
-        image.save('image.png')
-
         return image
 
 
@@ -57,10 +55,3 @@ class FileReaderFactory:
             return JSONFileReader(file_path)
         else:
             raise ValueError('Formato file non supportato')
-
-        """ OPPURE:
-        if file_path.endswith('.png') or file_path.endswith('.json'):
-            return FileReader(file_path)
-        else:
-            raise ValueError('Formato file non supportato')
-        """

@@ -1,42 +1,45 @@
+from FileReader import FileReaderFactory
+from SnakeGame import SnakeGame
 import json
-from FileReader import *
-
-# Crea un'istanza della classe FileReaderFactory
-factory = FileReaderFactory()
-
-# Utilizza il metodo create_reader() della factory per ottenere un'istanza della classe concreta appropriata
-reader = factory.create_reader('data/field_02.json')
-
-# Utilizza il metodo read_file() dell'oggetto reader per leggere il contenuto del file
-input_field = reader.read_file()
-
-# Visualizza il campo di partenza
-input_field.show()
 
 
 def play(game_file: str) -> int:
     """
-
-    :param game_file: str, path relativo del file in formato .json contenente le informazioni sulla partita
-    :return: int, lunghezza finale del corpo del serpente
+    Classe che riceve un file di gioco e restituisce la dimensione finale del serpente.
+    :param game_file: file di gioco
+    :return: Dimensione finale del serpente
     """
+    with open(game_file, 'r') as f:
+        data = json.load(f)
 
-# SETUP
-    game = open(game_file)
-    game_dict = json.load(game)
+        # Crea un'istanza della classe FileReaderFactory
+        factory = FileReaderFactory()
 
-    #import dynamic field from .png or .json
+        # Utilizza il metodo create_reader() per ottenere un'istanza della classe concreta appropriata
+        reader = factory.create_reader(data['field_in'])
 
-    #import moves
+        input_field = reader.read_file()
 
-# GAME
-    #check next move
+        # Genera una lista di mosse dalla stringa data['moves']
+        moves = data['moves'].split(' ')
 
-    #if next move is legal, update dynamic field
+        # Crea un'istanza della classe SnakeGame inizializzandola con:
+        # - Il campo specificato in data['field_in']
+        # - La posizione iniziale del serpente in data['start']
+        game_play = SnakeGame(input_field, data['start'])
 
-    #else end game
+        for move in moves:
+            if game_play.snake_is_alive() and move != '':
+                """
+                Rimuovere il commento sottostante se si vuole visualizzare dinamicamente il gioco
+                """
+                # game_play.dynamic_play()
+                game_play.move(move)
 
-# OUT
-    return -1
+        # Metodo che archivia un'immagine contenente la situazione finale del gioco
+        # sia nel caso in cui sono terminate la mosse sia nel caso il serpente sia morto
+        game_play.save_game_state(data['field_out'])
 
-play("data/gamefile_01.json")
+        return game_play.snake_length()
+
+
