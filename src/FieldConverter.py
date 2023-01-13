@@ -17,7 +17,7 @@ class FieldConverter:
     def __init__(self, field_array):
         self.field_array = field_array
 
-    def RGB_to_number(self):
+    def RGB_to_int(self):
         """
         Converte la matrice tridimensionale in una matrice bidimensionale utilizzando i valori
         RGB delle celle come chiavi per determinare i valori numeri corrispondenti
@@ -47,7 +47,7 @@ class FieldConverter:
         # restituisce l'array 2D
         return numpy_array_2d
 
-    def number_to_RGB(self):
+    def int_to_RGB(self):
         """
         Converte la matrice bidimensionale in una matrice tridimensionale utilizzando i valori
         numerici delle celle come chiavi per determinare i valori RGB corrispondenti
