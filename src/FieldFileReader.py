@@ -1,4 +1,7 @@
 from abc import ABC, abstractmethod
+import json
+from PIL import Image
+import numpy as np
 
 
 # Crea la classe astratta FieldReader con un metodo astratto read_file()
@@ -13,14 +16,42 @@ class FieldReader(ABC):
 
 # Crea la classe concreta PNGFieldReader che estende FileReader e implementa read_file()
 class PNGFieldReader(FieldReader):
+    """
+    Riceve il path a un'immagine di tipo PNG e restituisce un numpy array 3D
+    relativo all'immagine
+    """
+
     def read_file(self):
-        pass
+        with Image.open(self.file_path) as field_image:
+            return np.array(field_image)
 
 
 # Crea la classe concreta JSONFieldReader che estende FileReader e implementa read_file()
 class JSONFieldReader(FieldReader):
+    """
+    Riceve il path a un file in formato JSON e restituisce un numpy array 3D
+    relativo file
+    """
+
     def read_file(self):
-        pass
+        with open(self.file_path, 'r') as f:
+            data = json.load(f)
+        # Prendi le dimensioni dell'immagine dal file JSON
+        rows = data['rows']
+        cols = data['cols']
+
+        # crea un array 3D vuoto settando tutti i valori a (0,0,0)
+        field_array = np.zeros((rows, cols, 3), dtype=np.uint8)
+
+        # imposta le celle relative al cibo arancioni
+        for x, y in data["food"]:
+            field_array[x, y] = [255, 128, 0]
+
+        # imposta le celle relative agli ostacoli rosse
+        for x, y in data["blocks"]:
+            field_array[x, y] = [255, 0, 0]
+
+        return field_array
 
 
 # Crea la classe di factory FieldReaderFactory
