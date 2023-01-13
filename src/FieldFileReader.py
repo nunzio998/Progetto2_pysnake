@@ -3,6 +3,8 @@ import json
 from PIL import Image
 import numpy as np
 
+from FileChecker import FileChecker
+
 
 # Crea la classe astratta FieldReader con un metodo astratto read_file()
 class FieldReader(ABC):
@@ -58,9 +60,16 @@ class JSONFieldReader(FieldReader):
 class FieldReaderFactory:
     # Definisce il metodo create_reader() che restituisce un'istanza della classe concreta appropriata
     def create_reader(self, file_path):
-        if file_path.endswith('.png'):
-            return PNGFieldReader(file_path)
-        elif file_path.endswith('.json'):
-            return JSONFieldReader(file_path)
-        else:
-            raise ValueError('Formato file non supportato')
+        # crea un'istanza di FileChecker
+        file_checker = FileChecker(file_path)
+        try:
+            # controlla se il file esiste
+            file_checker.check()
+            if file_path.endswith('.png'):
+                return PNGFieldReader(file_path)
+            elif file_path.endswith('.json'):
+                return JSONFieldReader(file_path)
+            else:
+                raise ValueError('Formato file non supportato')
+        except FileNotFoundError as e:
+            raise e
