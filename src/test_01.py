@@ -1,10 +1,12 @@
 import time
 import unittest
-import numpy as np
-from PIL import Image
 from unittest import TestCase
 
+import numpy as np
+from PIL import Image
+
 from main import play
+
 
 class TestSuite(TestCase):
     def test_01(self):
