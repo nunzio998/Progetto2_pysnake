@@ -8,5 +8,5 @@ class FileChecker:
     def check(self):
         # Controlla se il file esiste
         if not os.path.isfile(self.file_path):
-            # solleva un'eccezione di tipo FileNotFoundError
+            # Solleva un'eccezione di tipo FileNotFoundError
             raise FileNotFoundError("File non trovato nella posizione specificata")
