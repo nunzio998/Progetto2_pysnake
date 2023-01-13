@@ -23,4 +23,13 @@ class JSONFieldReader(FieldReader):
         pass
 
 
-
+# Crea la classe di factory FieldReaderFactory
+class FieldReaderFactory:
+    # Definisce il metodo create_reader() che restituisce un'istanza della classe concreta appropriata
+    def create_reader(self, file_path):
+        if file_path.endswith('.png'):
+            return PNGFieldReader(file_path)
+        elif file_path.endswith('.json'):
+            return JSONFieldReader(file_path)
+        else:
+            raise ValueError('Formato file non supportato')
