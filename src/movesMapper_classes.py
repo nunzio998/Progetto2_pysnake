@@ -20,7 +20,7 @@ class MovesMapper:
     """
 
     @classmethod
-    def moves_to_number(cls, moves: str) -> list:
+    def moves_to_numbers(cls, moves: str) -> list:
         """
         Metodo che converte le mosse di tipo stringa in ingresso in valori interi e controlla la legalità della mossa,
         secondo la codifica stabilita nella classe Moves. Se una mossa presente nella stringa in ingresso non è
@@ -30,4 +30,8 @@ class MovesMapper:
                             le singole mosse separati da un numero qualsiasi di spazi, ad esempio: " N  S SE NE  "
         :return: list of ints, lista di interi che rappresentano le mosse
         """
-        return []
+        moves = moves.split()
+        moves_int = []
+        for item in moves:
+            moves_int.append(Moves[item].value)
+        return moves_int
