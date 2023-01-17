@@ -45,19 +45,40 @@ class Field:
         """
         return self.size[0], self.size[1]
 
-    def next_pos(self, init_pos, move) -> tuple:
+    def next_pos(self, init_pos: tuple, move: int) -> tuple:
         """
         Metodo che si occupa di determinare la posizione risultante dall'applicazione di una specifica mossa ad una
         specifica casella di partenza. Restituisce la posizione della casella finale e il suo contenuto.
 
-        :param init_pos: tuple, posizione iniziale dalla quale ci si vuole spostare applicando una mossa
+        :param init_pos: tuple, posizione iniziale dalla quale ci si vuole spostare applicando una mossa [riga,colonna]
         :param move: int, intero rappresentante una delle mosse legali definite nella classe Moves
         :return: tuple, posizione finale e valore: (riga,colonna,valore)
         """
-        pass
-
-
-array = np.array([[2, 4, 5, 6, 0], [1, 3, 6, 3, 2], [0, 0, 4, 1, 4], [1, 3, 4, 1, 0]])
-campo = Field(array)
-print(type(campo.get_size()))
-print(campo.get_value((7, 3)))
+        try:
+            self.get_value(init_pos)
+        except:
+            print("Posizione iniziale non valida, non compresa nei limiti del campo!")
+            return -1,
+        position = list(init_pos)  # crea un nuovo oggetto di tipo lista
+        match move:
+            case 0:
+                position[0] = position[0] - 1 if position[0] >= 1 else self.size[0] - 1
+            case 4:
+                position[0] = (position[0] + 1) % self.size[0]
+            case 2:
+                position[1] = (position[1] + 1) % self.size[1]
+            case 6:
+                position[1] = position[1] - 1 if position[1] >= 1 else self.size[1] - 1
+            case 1:
+                position[0] = position[0] - 1 if position[0] >= 1 else self.size[0] - 1
+                position[1] = (position[1] + 1) % self.size[1]
+            case 7:
+                position[0] = position[0] - 1 if position[0] >= 1 else self.size[0] - 1
+                position[1] = position[1] - 1 if position[1] >= 1 else self.size[1] - 1
+            case 3:
+                position[0] = (position[0] + 1) % self.size[0]
+                position[1] = (position[1] + 1) % self.size[1]
+            case 5:
+                position[0] = (position[0] + 1) % self.size[0]
+                position[1] = position[1] - 1 if position[1] >= 1 else self.size[1] - 1
+        return position, self.field[position[0], position[1]]
