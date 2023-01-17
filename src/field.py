@@ -17,6 +17,7 @@ class Field:
         get_value: restituisce il valore dell'elemento di posizione specificata in ingresso
         get_size:  restituisce le dimensioni del campo da gioco
         pop_food:  rimuove il cibo presente nella casella specificata in ingresso
+        next_pos:  restituisce la posizione e il contenuto della casella risultate da una mossa
     """
 
     def __init__(self, field: np.ndarray):
@@ -43,6 +44,17 @@ class Field:
         :return: tuple of ints
         """
         return self.size[0], self.size[1]
+
+    def next_pos(self, init_pos, move) -> tuple:
+        """
+        Metodo che si occupa di determinare la posizione risultante dall'applicazione di una specifica mossa ad una
+        specifica casella di partenza. Restituisce la posizione della casella finale e il suo contenuto.
+
+        :param init_pos: tuple, posizione iniziale dalla quale ci si vuole spostare applicando una mossa
+        :param move: int, intero rappresentante una delle mosse legali definite nella classe Moves
+        :return: tuple, posizione finale e valore: (riga,colonna,valore)
+        """
+        pass
 
 
 array = np.array([[2, 4, 5, 6, 0], [1, 3, 6, 3, 2], [0, 0, 4, 1, 4], [1, 3, 4, 1, 0]])
