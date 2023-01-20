@@ -1,5 +1,7 @@
 from Snake import Snake
 from field import Field
+from FieldConverter import FieldColor
+import numpy as np
 
 
 class Game:
@@ -44,5 +46,22 @@ class Game:
         if Game.check_start():  # aggiungere parametri di ingresso
             return -1  # rivedere il return, deve restituire la lunghezza finale del serpente
 
-        # continue
-        pass
+        # per ogni mossa
+        for move in self.moves:
+            head = self.snake.get_head()
+            next_pos, elem = self.field.next_pos(tuple(head), move)
+            # valuta l'esito della mossa e la fa eseguire al serpente
+            match elem:
+                case FieldColor.EMPTY.value:
+                    # se si interseca
+                    #   return
+                    # altrimenti
+                    self.snake.move(next_pos)
+                case FieldColor.FOOD.value:
+                    # se si interseca
+                    #   return
+                    # altrimenti
+                    self.snake.eat(next_pos)
+                case _:
+                    print("Il gioco è terminato")
+                    return self.snake.lenght
