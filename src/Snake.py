@@ -58,8 +58,8 @@ class Snake:
             intersects = True
         if (next_pos[0] - head[0]) * (next_pos[1] - head[1]) != 0:  # se va in diagonale
             # controlla che entrambe le seguenti due caselle non appartengano al body
-            to_check1 = (next_pos[0], head[1])
-            to_check2 = (head[0], next_pos[1])
+            to_check1 = [next_pos[0], head[1]]
+            to_check2 = [head[0], next_pos[1]]
             if to_check1 in self.body[1:-1] and to_check2 in self.body[1:-1]:
                 intersects = True
         return intersects
