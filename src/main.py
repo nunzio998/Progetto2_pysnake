@@ -31,3 +31,5 @@ def play(game_file: str) -> int:
 
     # Faccio partire il gioco col metodo run() di Game
     game.run()
+
+    return snake.get_lenght()
