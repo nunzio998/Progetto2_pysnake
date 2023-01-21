@@ -1,5 +1,5 @@
 from Snake import Snake
-from field import Field
+from Field import Field
 from FieldConverter import FieldColor
 
 
