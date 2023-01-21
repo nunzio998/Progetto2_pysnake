@@ -54,7 +54,7 @@ class Snake:
         """
         intersects = False
         head = self.body[-1]
-        if next_pos in self.body[2:-1]:
+        if next_pos in self.body[1:-1]:
             intersects = True
         if (next_pos[0] - head[0]) * (next_pos[1] - head[1]) != 0:  # se va in diagonale
             # controlla che entrambe le seguenti due caselle non appartengano al body
