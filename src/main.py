@@ -36,7 +36,7 @@ def play(game_file: str) -> int:
     game = Game(field, snake, moves_mapped)
 
     # Faccio partire il gioco col metodo run() di Game
-    game.run(True)
+    game.run(dynamic_play=False)
 
     # Converto il field finale in RGB prima di salvarlo nel file di output
     field_3d = FieldConverter(game.get_game_state_2D()).int_to_RGB()
