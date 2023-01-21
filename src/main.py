@@ -30,12 +30,3 @@ def play(game_file: str) -> int:
 
     # Faccio partire il gioco col metodo run() di Game
     # game.run()
-    pass
-
-
-if __name__ == "__main__":
-    game_file = "data/gamefile_01.json"
-    gameFile = GameFileReader(game_file)
-    print(type(gameFile.getFieldIn()))
-    field = FieldReaderFactory.create_reader(gameFile.getFieldIn()).read_file()
-    print(field)
