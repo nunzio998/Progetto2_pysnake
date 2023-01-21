@@ -2,11 +2,12 @@ import json
 
 from src.Field import Field
 from src.FieldConverter import FieldConverter
-from src.FieldFileReader import FieldReader, FieldReaderFactory
+from src.FieldFileReader import FieldReaderFactory
 from src.Game import Game
 from src.GameFileReader import GameFileReader
 from src.PNGFileMaker import PNGFileMaker
 from src.Snake import Snake
+from src.movesMapper_classes import MovesMapper
 
 
 def play(game_file: str) -> int:
@@ -27,8 +28,12 @@ def play(game_file: str) -> int:
     # Creo l'oggetto Snake
     snake = Snake(gameFile.getStart())
 
+    moves = gameFile.getMoves()
+
+    moves_mapped = MovesMapper().moves_to_numbers(moves)
+
     # Creo l'oggetto Game e gli passo Field, Snake e moves
-    game = Game(field, snake, gameFile.getMoves())
+    game = Game(field, snake, moves_mapped)
 
     # Faccio partire il gioco col metodo run() di Game
     game.run()
