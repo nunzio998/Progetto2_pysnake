@@ -56,7 +56,7 @@ class Field:
         :param pos:
         :return:
         """
-        self.field[pos[0], pos[1]] = FieldColor.EMPTY.FOOD
+        self.field[pos[0], pos[1]] = FieldColor.EMPTY.value
 
 
     def next_pos(self, init_pos: tuple, move: int) -> tuple:
