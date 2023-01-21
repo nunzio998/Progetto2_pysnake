@@ -17,26 +17,9 @@ class Snake:
         :param next_pos:
         :return:
         """
-        def double_items(body: list) -> bool:
-            """
-            Funzione che controlla se sono presenti duplicati all'interno del corpo del serpente
-            :param body: corpo del serpente
-            :return: True se è presente almeno un duplicato, False altrimenti
-            """
-            seen = []
-            duplicate_found = False
-            for sublist in body:
-                if sublist in seen:
-                    duplicate_found = True
-                    break
-                else:
-                    seen.append(sublist)
-            return duplicate_found
-
-        if not double_items(self.body):
-            self.trail.append(self.body[0])  # aggiorno la scia.
-
         self.body.append(next_pos)  # aggiungo la nuova posizione della testa in fondo alla lista.
+        if self.body[0] != self.body[1]:
+            self.trail.append(self.body[0])  # aggiorno la scia.
         self.body.pop(0)  # elimino l'ultimo punto della coda.
 
     def eat(self, next_pos: tuple):
