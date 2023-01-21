@@ -36,10 +36,10 @@ def play(game_file: str) -> int:
     game = Game(field, snake, moves_mapped)
 
     # Faccio partire il gioco col metodo run() di Game
-    game.run()
+    game.run(True)
 
     # Converto il field finale in RGB prima di salvarlo nel file di output
-    field_3d = FieldConverter(field.get_field()).int_to_RGB()
+    field_3d = FieldConverter(game.get_game_state_2D()).int_to_RGB()
 
     # Salvo il risultato nel file finale
     PNGFileMaker.write_file(gameFile.getFieldOut(), field_3d)
