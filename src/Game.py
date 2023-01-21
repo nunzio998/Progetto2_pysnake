@@ -48,16 +48,15 @@ class Game:
             return False  # se in start c'è campo vuoto o cibo, si continua a giocare
         return True  # se start è al di fuori del campo da gioco
 
-    def run(self) -> int:
+    def run(self):
         """
         Metodo che gestisce la partita.
         ...
 
-        :return: int, lunghezza finale del serpente
+        :return:
         """
         if Game.check_start(self.field, self.snake):
-            return self.snake.lenght  # rivedere il return, deve restituire la lunghezza finale del serpente
-
+            return
         # per ogni mossa
         for move in self.moves:
             head = self.snake.get_head()
@@ -66,16 +65,16 @@ class Game:
             match elem:
                 case FieldColor.EMPTY.value:
                     if self.snake.intersects(next_pos):
-                        return self.snake.lenght
+                        return
                     else:
                         self.snake.move(next_pos)
                 case FieldColor.FOOD.value:
                     if self.snake.intersects(next_pos):
-                        return self.snake.lenght
+                        return
                     else:
                         self.snake.eat(next_pos)
                         self.field.remove(next_pos)
                 case _:
                     print("Il gioco è terminato")
-                    return self.snake.lenght
-        return self.snake.lenght
+                    return
+        return
