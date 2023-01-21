@@ -53,15 +53,14 @@ class Game:
             # valuta l'esito della mossa e la fa eseguire al serpente
             match elem:
                 case FieldColor.EMPTY.value:
-                    # se si interseca
-                    #   return
-                    # altrimenti
-                    self.snake.move(next_pos)
+                    successful_move = self.snake.move(next_pos)
+                    if not successful_move:
+                        return self.snake.lenght
                 case FieldColor.FOOD.value:
-                    # se si interseca
-                    #   return
-                    # altrimenti
-                    self.snake.eat(next_pos)
+                    successful_eat = self.snake.eat(next_pos)
+                    if not successful_eat:
+                        return self.snake.lenght
                 case _:
                     print("Il gioco è terminato")
                     return self.snake.lenght
+
