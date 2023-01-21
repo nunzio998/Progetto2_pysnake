@@ -1,5 +1,3 @@
-import json
-
 from src.Field import Field
 from src.FieldConverter import FieldConverter
 from src.FieldFileReader import FieldReaderFactory
