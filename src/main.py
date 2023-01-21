@@ -5,6 +5,7 @@ from src.FieldConverter import FieldConverter
 from src.FieldFileReader import FieldReader, FieldReaderFactory
 from src.Game import Game
 from src.GameFileReader import GameFileReader
+from src.PNGFileMaker import PNGFileMaker
 from src.Snake import Snake
 
 
@@ -31,5 +32,11 @@ def play(game_file: str) -> int:
 
     # Faccio partire il gioco col metodo run() di Game
     game.run()
+
+    # Converto il field finale in RGB prima di salvarlo nel file di output
+    field_3d = FieldConverter(field.get_field()).int_to_RGB()
+
+    # Salvo il risultato nel file finale
+    PNGFileMaker.write_file(gameFile.getFieldOut(), field_3d)
 
     return snake.get_lenght()
