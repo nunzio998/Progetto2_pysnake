@@ -50,7 +50,7 @@ class Game:
             return False  # se in start c'è campo vuoto o cibo, si continua a giocare
         return True  # se start è al di fuori del campo da gioco
 
-    def run(self):
+    def run(self, dynamic_play: bool):
         """
         Metodo che gestisce la partita.
         ...
@@ -63,7 +63,8 @@ class Game:
         for move in self.moves:
             head = self.snake.get_head()
             next_pos, elem = self.field.next_pos(tuple(head), move)
-            Game.dynamic_play(self)
+            if dynamic_play:
+                Game.dynamic_play(self)
             # valuta l'esito della mossa e la fa eseguire al serpente
             match elem:
                 case FieldColor.EMPTY.value:
@@ -77,6 +78,8 @@ class Game:
                     else:
                         self.snake.eat(next_pos)
                         self.field.remove(next_pos)
+                case FieldColor.SNAKE_TRAIL.value:
+                    continue
                 case _:
                     return
         return
