@@ -59,7 +59,8 @@ class JSONFieldReader(FieldReader):
 # Crea la classe di factory FieldReaderFactory
 class FieldReaderFactory:
     # Definisce il metodo create_reader() che restituisce un'istanza della classe concreta appropriata
-    def create_reader(self, file_path):
+    @staticmethod
+    def create_reader(file_path):
         # crea un'istanza di FileChecker
         file_checker = FileChecker(file_path)
         try:
