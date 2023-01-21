@@ -1,6 +1,8 @@
+from matplotlib import pyplot as plt
+
 from Snake import Snake
 from Field import Field
-from FieldConverter import FieldColor
+from FieldConverter import FieldColor, FieldConverter
 
 
 class Game:
@@ -61,6 +63,7 @@ class Game:
         for move in self.moves:
             head = self.snake.get_head()
             next_pos, elem = self.field.next_pos(tuple(head), move)
+            Game.dynamic_play(self)
             # valuta l'esito della mossa e la fa eseguire al serpente
             match elem:
                 case FieldColor.EMPTY.value:
@@ -77,3 +80,35 @@ class Game:
                 case _:
                     return
         return
+
+    def get_game_state_2D(self):
+        """
+        Metodo che serve a visualizzare dinamicamente la partita
+        come si sta evolvendo.
+        :return:
+        """
+        # Crea un'immagine vuota con le dimensioni del campo da gioco
+        rows, cols = self.field.size
+        current_field = self.field.get_field()
+
+        # Colora ogni casella del campo
+        for row in range(rows):
+            for col in range(cols):
+                if [row, col] in self.snake.get_body():
+                    # Colora il corpo del serpente di verde
+                    current_field[row, col] = FieldColor.SNAKE.value
+                elif [row, col] in self.snake.get_trail():
+                    # Colora la scia del serpente di grigio
+                    current_field[row, col] = FieldColor.SNAKE_TRAIL.value
+        return current_field
+
+    def dynamic_play(self):
+        image = FieldConverter(Game.get_game_state_2D(self)).int_to_RGB()
+        plt.ion()  # Attiva l'interactive mode
+        plt.imshow(image)  # Visualizza l'immagine
+        plt.show()  # Mostra la finestra con l'immagine
+        plt.draw()  # Forza il ridisegno della finestra
+        plt.pause(0.01)  # Aspetta 0.01 secondi e aggiorna l'immagine
+
+
+
