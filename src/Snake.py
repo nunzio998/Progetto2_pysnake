@@ -35,8 +35,9 @@ class Snake:
 
         if not double_items(self.body):
             self.trail.append(self.body[0])  # aggiorno la scia.
-            self.body.pop(0)  # elimino l'ultimo punto della coda.
+
         self.body.append(next_pos)  # aggiungo la nuova posizione della testa in fondo alla lista.
+        self.body.pop(0)  # elimino l'ultimo punto della coda.
 
     def eat(self, next_pos: tuple):
         """
