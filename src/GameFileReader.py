@@ -15,10 +15,7 @@ class GameFileReader:
         except:
             raise FileNotFoundError(f"Il file {file} non è presente..")
 
-        try:
-            self.field_in = mtp.imread(game["field_in"])
-        except:
-            raise FileNotFoundError(f"Il file {game['field_in']} non è presente..")
+        self.field_in = game["field_in"]
         self.start = game["start"]
         self.moves = game["moves"]
         self.field_out = game["field_out"]  # Nome e ubicazione del file che verrà creato alla fine.
