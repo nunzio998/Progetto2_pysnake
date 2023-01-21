@@ -8,11 +8,13 @@ class GameFileReader:
     Classe che si occupa della lettura del file contenente le info sul campo da gioco. I campi presenti in tale file
     vengono poi salvati come attributi della classe in modo da renderli recuperabili in seguito.
     """
+
     def __init__(self, file: str):
         try:
             gameFile = open(file)
             game = json.load(gameFile)
-        except:
+            gameFile.close()
+        except FileNotFoundError:
             raise FileNotFoundError(f"Il file {file} non è presente..")
 
         self.field_in = game["field_in"]
