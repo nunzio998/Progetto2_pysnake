@@ -1,4 +1,5 @@
 import numpy as np
+from FieldConverter import FieldColor
 
 
 class Field:
@@ -47,6 +48,16 @@ class Field:
 
     def get_field(self):
         return self.field
+
+    def remove(self, pos: tuple):
+        """
+        Rimuove un oggetto dal campo portando la casella specificata al valore di casella vuota;
+        viene usato per rimuovere il cibo da una casella quando il serpente la attraversa
+        :param pos:
+        :return:
+        """
+        self.field[pos[0], pos[1]] = FieldColor.EMPTY.FOOD
+
 
     def next_pos(self, init_pos: tuple, move: int) -> tuple:
         """
