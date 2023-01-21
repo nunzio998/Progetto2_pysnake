@@ -10,33 +10,27 @@ class Snake:
         self.lenght = 1
         self.trail = []
 
-    def move(self, next_pos: tuple) -> bool:
+    def move(self, next_pos: tuple):
         """
         Metodo invocato nel caso in cui il serpente si muove in una casella vuota. Si aggiorna quindi la lista del body
         e della scia, lasciando invece invariata la lunghezza.
         :param next_pos:
-        :return: True se la mossa è riuscita, False se non è riuscita a causa di intersezione del serpente
+        :return:
         """
-        if self.intersects(next_pos):
-            return False
         self.trail.append(self.body[0])  # aggiorno la scia.
         self.body.pop(0)  # elimino l'ultimo punto della coda.
         self.body.append(next_pos)  # aggiungo la nuova posizione della testa in fondo alla lista.
-        return True
 
-    def eat(self, next_pos: tuple) -> bool:
+    def eat(self, next_pos: tuple):
         """
         Metodo invocato nel caso in cui il serpente si muove in una casella che contiene il cibo. In questo caso la
         lunghezza viene incrementata e vengono aggiornata la lista relativa al corpo. Non viene quindi effettuato
         il pop del primo elemento della lista body in quando la lunghezza del corpo aumenta.
         :param next_pos:
-        :return: True se la mossa è riuscita, False se non è riuscita a causa di intersezione del serpente
+        :return:
         """
-        if self.intersects(next_pos):
-            return False
         self.body.append(next_pos)  # aggiungo la nuova posizione della testa.
         self.lenght += 1  # aumento la lunghezza
-        return True
 
     # GETTERS:
     def get_head(self):
@@ -48,7 +42,7 @@ class Snake:
     def get_trail(self):
         return self.trail
 
-    def intersects (self, next_pos) -> bool:
+    def intersects(self, next_pos) -> bool:
         """
 
         :param next_pos:
