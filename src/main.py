@@ -3,6 +3,7 @@ import json
 from src.Field import Field
 from src.FieldConverter import FieldConverter
 from src.FieldFileReader import FieldReader, FieldReaderFactory
+from src.Game import Game
 from src.GameFileReader import GameFileReader
 from src.Snake import Snake
 
@@ -26,7 +27,7 @@ def play(game_file: str) -> int:
     snake = Snake(gameFile.getStart())
 
     # Creo l'oggetto Game e gli passo Field, Snake e moves
-    # game = Game(field, snake, gameFile.getMoves())
+    game = Game(field, snake, gameFile.getMoves())
 
     # Faccio partire il gioco col metodo run() di Game
-    # game.run()
+    game.run()
