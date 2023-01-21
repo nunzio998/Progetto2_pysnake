@@ -45,6 +45,9 @@ class Field:
         """
         return self.size[0], self.size[1]
 
+    def get_field(self):
+        return self.field
+
     def next_pos(self, init_pos: tuple, move: int) -> tuple:
         """
         Metodo che si occupa di determinare la posizione risultante dall'applicazione di una specifica mossa ad una
