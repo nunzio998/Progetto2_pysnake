@@ -75,6 +75,5 @@ class Game:
                         self.snake.eat(next_pos)
                         self.field.remove(next_pos)
                 case _:
-                    print("Il gioco è terminato")
                     return
         return
