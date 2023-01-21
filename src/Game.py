@@ -1,7 +1,6 @@
 from Snake import Snake
 from field import Field
 from FieldConverter import FieldColor
-import numpy as np
 
 
 class Game:
@@ -66,15 +65,16 @@ class Game:
             # valuta l'esito della mossa e la fa eseguire al serpente
             match elem:
                 case FieldColor.EMPTY.value:
-                    # se si interseca
-                    #   return
-                    # altrimenti
-                    self.snake.move(next_pos)
+                    if self.snake.intersects(next_pos):
+                        return self.snake.lenght
+                    else:
+                        self.snake.move(next_pos)
                 case FieldColor.FOOD.value:
-                    # se si interseca
-                    #   return
-                    # altrimenti
-                    self.snake.eat(next_pos)
+                    if self.snake.intersects(next_pos):
+                        return self.snake.lenght
+                    else:
+                        self.snake.eat(next_pos)
                 case _:
                     print("Il gioco è terminato")
                     return self.snake.lenght
+        return self.snake.lenght
