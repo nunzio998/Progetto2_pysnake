@@ -43,6 +43,9 @@ class Snake:
     def get_trail(self):
         return self.trail
 
+    def get_lenght(self):
+        return self.lenght
+
     def intersects(self, next_pos) -> bool:
         """
 
