@@ -1,7 +1,8 @@
-from abc import ABC, abstractmethod
 import json
-from PIL import Image
+from abc import ABC, abstractmethod
+
 import numpy as np
+from PIL import Image
 
 from FileChecker import FileChecker
 

@@ -1,8 +1,8 @@
 from matplotlib import pyplot as plt
 
-from Snake import Snake
 from Field import Field
 from FieldConverter import FieldColor, FieldConverter
+from Snake import Snake
 
 
 class Game:

@@ -1,7 +1,5 @@
 import json
 
-import matplotlib.image as mtp
-
 
 class GameFileReader:
     """
