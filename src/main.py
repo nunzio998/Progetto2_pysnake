@@ -5,7 +5,7 @@ from src.Game import Game
 from src.GameFileReader import GameFileReader
 from src.PNGFileMaker import PNGFileMaker
 from src.Snake import Snake
-from src.movesMapper_classes import MovesMapper
+from src.MovesMapper_classes import MovesMapper
 
 
 def play(game_file: str) -> int:
