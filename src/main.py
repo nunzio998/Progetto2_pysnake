@@ -4,7 +4,7 @@ from abc import abstractmethod, ABC
 from enum import Enum
 
 import numpy as np
-from PIL.Image import Image
+from PIL import Image
 from matplotlib import pyplot as plt
 
 
