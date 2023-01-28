@@ -3,9 +3,9 @@ from FieldConverter import FieldConverter
 from FieldFileReader import FieldReaderFactory
 from Game import Game
 from GameFileReader import GameFileReader
+from MovesMapper_classes import MovesMapper
 from PNGFileMaker import PNGFileMaker
 from Snake import Snake
-from MovesMapper_classes import MovesMapper
 
 # La variabile è impostata come globale per non alterare la signature della funzione play.
 dynamic_play = False
