@@ -1,11 +1,14 @@
-from src.Field import Field
-from src.FieldConverter import FieldConverter
-from src.FieldFileReader import FieldReaderFactory
-from src.Game import Game
-from src.GameFileReader import GameFileReader
-from src.PNGFileMaker import PNGFileMaker
-from src.Snake import Snake
-from src.MovesMapper_classes import MovesMapper
+from Field import Field
+from FieldConverter import FieldConverter
+from FieldFileReader import FieldReaderFactory
+from Game import Game
+from GameFileReader import GameFileReader
+from PNGFileMaker import PNGFileMaker
+from Snake import Snake
+from MovesMapper_classes import MovesMapper
+
+# La variabile è impostata come globale per non alterare la signature della funzione play.
+dynamic_play = False
 
 
 def play(game_file: str) -> int:
@@ -34,7 +37,7 @@ def play(game_file: str) -> int:
     game = Game(field, snake, moves_mapped)
 
     # Faccio partire il gioco col metodo run() di Game
-    game.run(dynamic_play=False)
+    game.run(dynamic_play=dynamic_play)
 
     # Converto il field finale in RGB prima di salvarlo nel file di output
     field_3d = FieldConverter(game.get_game_state_2D()).int_to_RGB()
@@ -43,3 +46,28 @@ def play(game_file: str) -> int:
     PNGFileMaker.write_file(gameFile.getFieldOut(), field_3d)
 
     return snake.get_lenght()
+
+
+# Esecuzione con docker
+if __name__ == "__main__":
+    user_input = input("Inserire il nome del file di gioco: ")
+    dynamic_mode = input("Vuoi eseguire in modalità dinamica? (y/[n]) ")
+    if dynamic_mode == "y" or dynamic_mode == "yes" or dynamic_mode == "Y":
+        dynamic_play = True
+    play(user_input)
+    print("ESECUZIONE TERMINATA.")
+
+
+
+
+""" ESECUZIONE CLASSICA
+
+if __name__ == "__main__":
+    user_input = input("Inserire il nome del file di gioco: ")
+    dynamic_mode = input("Vuoi eseguire in modalità dinamica? (y/[n]) ")
+    if dynamic_mode == "y" or dynamic_mode == "yes" or dynamic_mode == "Y":
+        dynamic_play = True
+    play("data/" + user_input)
+    print("ESECUZIONE TERMINATA.")
+    
+"""
