@@ -79,7 +79,10 @@ class Game:
                         self.snake.eat(next_pos)
                         self.field.remove(next_pos)
                 case FieldColor.SNAKE_TRAIL.value:
-                    continue
+                    if self.snake.intersects(next_pos):
+                        return
+                    else:
+                        self.snake.move(next_pos)
                 case _:
                     return
         return
@@ -90,19 +93,16 @@ class Game:
         come si sta evolvendo.
         :return:
         """
-        # Crea un'immagine vuota con le dimensioni del campo da gioco
-        rows, cols = self.field.size
+        # Crea un'immagine con la situazione del campo corrente senza snake
         current_field = self.field.get_field()
 
-        # Colora ogni casella del campo
-        for row in range(rows):
-            for col in range(cols):
-                if [row, col] in self.snake.get_body():
-                    # Colora il corpo del serpente di verde
-                    current_field[row, col] = FieldColor.SNAKE.value
-                elif [row, col] in self.snake.get_trail():
-                    # Colora la scia del serpente di grigio
-                    current_field[row, col] = FieldColor.SNAKE_TRAIL.value
+        # Inserisci trail e snake
+        for [row, col] in self.snake.get_trail():
+            # Colora la scia del serpente di grigio
+            current_field[row, col] = FieldColor.SNAKE_TRAIL.value
+        for [row, col] in self.snake.get_body():
+            # Colora il corpo del serpente di verde
+            current_field[row, col] = FieldColor.SNAKE.value
         return current_field
 
     def dynamic_play(self):
