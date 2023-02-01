@@ -13,6 +13,7 @@ WORKDIR .
 COPY src .
 COPY src/data .
 
+
 # creo e attivo un virtual environment
 RUN python -m venv ./env
 ENV VIRTUAL_ENV /env
@@ -28,9 +29,11 @@ RUN pip install -r requirements.txt
 # All'avvio del container dopo la build dell'immagine verra eseguito lo script main.py
 CMD ["python", "main.py"]
 
-
 # Comando da abilitare se si vuole eseguire il run dei test
 #CMD ["python", "test_01.py"]
 
+# Disabilitando i due comandi precedenti e abilitando il sottostante si può lanciare il
+# container e lanciare manualmente gli script.
+#CMD sh
 
 
