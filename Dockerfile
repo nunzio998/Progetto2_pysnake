@@ -1,8 +1,3 @@
-# Il Dockerfile deve essere eseguito con l'uso dei seguenti comandi:
-# docker build -t [tag_immagine] .
-# docker run -t -i [tag_immagine]
-
-
 # Specifico l'immagine da cui partire
 FROM python:3.10
 
