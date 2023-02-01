@@ -103,3 +103,37 @@ e vengono installati i requisiti contenuti nel file 'requirements.txt'. Nel file
 La creazione dell'immagine e del container devono quindi essere eseguiti con l'uso dei seguenti comandi:
 * docker build -t [tag_immagine] .
 * docker run -t -i [tag_immagine]
+
+## Structure
+
+Per la corretta esecuzione del programma è necessario che la directory contenente il codice del progetto abbia la seguente struttura:
+
+```
+.
+└── Progetto2_pysnake
+    ├── src
+    │   ├── data
+    │   │   ├── expected_01.png
+    │   │   ├── expected_02.png
+    │   │   ├── ...
+    │   │   ├── field_01.png
+    │   │   ├── field_02.json
+    │   │   ├── ...
+    │   │   ├── gamefile_01.json
+    │   │   ├── gamefile_02.json
+    │   │   └── ...
+    │   ├── Field.py
+    │   ├── FieldConverter.py
+    │   ├── FileChecker.py
+    │   ├── Game.py
+    │   ├── GameFileReader.py
+    │   ├── main-py
+    │   ├── MovesMapper_classes.py
+    │   ├── PNGFileMaker.py
+    │   ├── Snake.py
+    │   └── test_01.py
+    ├── .gitignore
+    ├── Dockerfile
+    ├── README.md
+    └── requirements.txt
+```
