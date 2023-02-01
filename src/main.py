@@ -50,7 +50,7 @@ def play(game_file: str) -> int:
     return snake.get_lenght()
 
 
-# Esecuzione con docker
+# Quando specifico
 if __name__ == "__main__":
     user_input = input("Inserire il nome del file di gioco: ")
     dynamic_mode = input("Vuoi eseguire in modalità dinamica? (y/[n]) ")
@@ -58,18 +58,3 @@ if __name__ == "__main__":
         dynamic_play = True
     play(user_input)
     print("ESECUZIONE TERMINATA.")
-
-
-
-
-""" ESECUZIONE CLASSICA
-
-if __name__ == "__main__":
-    user_input = input("Inserire il nome del file di gioco: ")
-    dynamic_mode = input("Vuoi eseguire in modalità dinamica? (y/[n]) ")
-    if dynamic_mode == "y" or dynamic_mode == "yes" or dynamic_mode == "Y":
-        dynamic_play = True
-    play("data/" + user_input)
-    print("ESECUZIONE TERMINATA.")
-    
-"""
