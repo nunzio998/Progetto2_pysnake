@@ -89,9 +89,8 @@ class Game:
 
     def get_game_state_2D(self):
         """
-        Metodo che serve a visualizzare dinamicamente la partita
-        come si sta evolvendo.
-        :return:
+        Metodo che serve restituisce la visualizzare dinamicamente la partita nel momento in cui viene chiamato
+        :return: current_field
         """
         # Crea un'immagine con la situazione del campo corrente senza snake
         current_field = self.field.get_field()
@@ -106,6 +105,10 @@ class Game:
         return current_field
 
     def dynamic_play(self):
+        """
+        Metodo che crea e aggiorna un' immagine per la visualizzazione dinamica della partita
+        :return:
+        """
         image = FieldConverter(Game.get_game_state_2D(self)).int_to_RGB()
         plt.ion()  # Attiva l'interactive mode
         plt.imshow(image)  # Visualizza l'immagine

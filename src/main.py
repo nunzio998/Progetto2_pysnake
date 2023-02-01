@@ -29,8 +29,10 @@ def play(game_file: str) -> int:
     # Creo l'oggetto Snake
     snake = Snake(gameFile.getStart())
 
+    # mosse dal gamefile
     moves = gameFile.getMoves()
 
+    # Conversione mosse
     moves_mapped = MovesMapper().moves_to_numbers(moves)
 
     # Creo l'oggetto Game e gli passo Field, Snake e moves
