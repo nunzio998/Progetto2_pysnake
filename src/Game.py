@@ -3,6 +3,7 @@ from matplotlib import pyplot as plt
 from Field import Field
 from FieldConverter import FieldColor, FieldConverter
 from Snake import Snake
+from copy import copy
 
 
 class Game:
@@ -78,11 +79,6 @@ class Game:
                     else:
                         self.snake.eat(next_pos)
                         self.field.remove(next_pos)
-                case FieldColor.SNAKE_TRAIL.value:
-                    if self.snake.intersects(next_pos):
-                        return
-                    else:
-                        self.snake.move(next_pos)
                 case _:
                     return
         return
@@ -93,7 +89,7 @@ class Game:
         :return: current_field
         """
         # Crea un'immagine con la situazione del campo corrente senza snake
-        current_field = self.field.get_field()
+        current_field = copy(self.field.get_field())
 
         # Inserisci trail e snake
         for [row, col] in self.snake.get_trail():
