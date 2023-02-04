@@ -1,5 +1,4 @@
 from matplotlib import pyplot as plt
-
 from Field import Field
 from FieldConverter import FieldColor, FieldConverter
 from Snake import Snake
@@ -16,8 +15,11 @@ class Game:
     moves: list of ints, la lista di mosse che rappresentano la partita
 
     Metodi:
-    run: gestisce la partita
     check_start: esegue un controllo sulle condizioni iniziali della partita
+    run: gestisce la partita
+    get_game_state_2D:
+    dynamic_play:
+
     """
 
     def __init__(self, field: Field, snake: Snake, moves: list):
@@ -26,18 +28,20 @@ class Game:
         self.moves = moves
 
     @classmethod
-    def check_start(cls, field, snake) -> bool:
+    def check_start(cls, field: Field, snake: Snake) -> bool:
         """
-        Metodo che esegue un controllo sulle condizioni iniziali della partita.
-            * se start è su cibo: snake mangia subito
-            * se start è su ostacolo: snake muore subito con lunghezza 1
-            * se start è fuori dal campo: snake muore subito con lunghezza 1
+        Metodo che esegue un controllo sulle condizioni iniziali della partita, in particolare:
+            * se start è su cibo: snake "mangia" subito, risultando con lunghezza 2 e con body costituito da due
+                posizioni uguali tra loro e pari alla posizione di start
+            * se start è su una casella contenente un ostacolo: snake "muore" subito con lunghezza 1
+            * se start è fuori dal campo: snake "muore" subito con lunghezza 1
 
-        Se il serpente muore subito restituisce True
-
-        :param field: Campo da gioco sul quale si sta giocando
-        :param snake: Serpente con cui si sta giocando
-        :return:
+        :param field: Field
+                    Campo da gioco sul quale si sta giocando
+        :param snake: Snake
+                    Serpente con cui si sta giocando
+        :return: bool
+                    True se a causa delle condizioni iniziali il serpente muore immediatamente
         """
         size = field.get_size()  # dimensioni del campo
         start = snake.get_head()  # posizione iniziale del serpente
@@ -53,9 +57,13 @@ class Game:
 
     def run(self, dynamic_play: bool):
         """
-        Metodo che gestisce la partita.
-        ...
+        Metodo che gestisce la partita. In particolare:
+         - esegue il check delle condizioni iniziali
+         - per ogni mossa della partita, esegue la valutazione dello spostamento del serpente e controlla l'esito
+            di tale mossa, richiedendo l'esecuzione delle operazioni corrispondenti ad essa.
 
+        :param: dynamic_play: bool
+                    True se è richiesta la visualizzazione dinamica della partita, False altrimenti
         :return:
         """
         if Game.check_start(self.field, self.snake):
@@ -85,7 +93,7 @@ class Game:
 
     def get_game_state_2D(self):
         """
-        Metodo che serve restituisce la visualizzare dinamicamente la partita nel momento in cui viene chiamato
+        Metodo che serve a visualizzare dinamicamente la partita
         :return: current_field
         """
         # Crea un'immagine con la situazione del campo corrente senza snake

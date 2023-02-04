@@ -25,9 +25,11 @@ class MovesMapper:
         secondo la codifica stabilita nella classe Moves. Se una mossa presente nella stringa in ingresso non è
         una mossa legale, ovvero non definita in Moves (a meno di caratteri minuscoli), il metodo solleva un'eccezione
         di tipo KeyError.
-        :param moves: str, stringa contenente le mosse da convertire; deve essere composta da caratteri rappresentanti
+        :param moves: str
+                    stringa contenente le mosse da convertire; deve essere composta da caratteri rappresentanti
                             le singole mosse separati da un numero qualsiasi di spazi, ad esempio: " N  S SE NE  "
-        :return: list of ints, lista di interi che rappresentano le mosse
+        :return: list of ints
+                    lista di interi che rappresentano le mosse
         """
         moves = moves.upper().split()
         moves_int = []
