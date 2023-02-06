@@ -15,6 +15,12 @@ class FieldColor(Enum):
 
 
 class FieldConverter:
+    """
+    Questa classe converte una matrice bidimensionale che rappresenta il campo gioco
+    in una matrice tridimensionale e viceversa, utilizzando i valori numerici delle celle come
+    chiavi per determinare i valori RGB corrispondenti. La conversione viene effettuata tramite
+    l'utilizzo di un dizionario che mappa i valori numerici in valori RGB.
+    """
     def __init__(self, field_array):
         self.field_array = field_array
 
