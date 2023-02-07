@@ -14,6 +14,8 @@ class GameFileReader:
             gameFile.close()
         except FileNotFoundError:
             raise FileNotFoundError(f"Il file {file} non è presente..")
+        except json.decoder.JSONDecodeError:
+            raise json.decoder.JSONDecodeError(f"Il file {file} non è in formato JSON..")
 
         self.field_in = game["field_in"]
         self.start = game["start"]
