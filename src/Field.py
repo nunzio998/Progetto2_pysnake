@@ -83,25 +83,24 @@ class Field:
             print("Posizione iniziale non valida, non compresa nei limiti del campo!")
             return -1,
         position = list(init_pos)  # crea un nuovo oggetto di tipo lista
-        match move:
-            case 0:
-                position[0] = position[0] - 1 if position[0] >= 1 else self.size[0] - 1
-            case 4:
-                position[0] = (position[0] + 1) % self.size[0]
-            case 2:
-                position[1] = (position[1] + 1) % self.size[1]
-            case 6:
-                position[1] = position[1] - 1 if position[1] >= 1 else self.size[1] - 1
-            case 1:
-                position[0] = position[0] - 1 if position[0] >= 1 else self.size[0] - 1
-                position[1] = (position[1] + 1) % self.size[1]
-            case 7:
-                position[0] = position[0] - 1 if position[0] >= 1 else self.size[0] - 1
-                position[1] = position[1] - 1 if position[1] >= 1 else self.size[1] - 1
-            case 3:
-                position[0] = (position[0] + 1) % self.size[0]
-                position[1] = (position[1] + 1) % self.size[1]
-            case 5:
-                position[0] = (position[0] + 1) % self.size[0]
-                position[1] = position[1] - 1 if position[1] >= 1 else self.size[1] - 1
+        if move == 0:
+            position[0] = position[0] - 1 if position[0] >= 1 else self.size[0] - 1
+        elif move == 4:
+            position[0] = (position[0] + 1) % self.size[0]
+        elif move == 2:
+            position[1] = (position[1] + 1) % self.size[1]
+        elif move == 6:
+            position[1] = position[1] - 1 if position[1] >= 1 else self.size[1] - 1
+        elif move == 1:
+            position[0] = position[0] - 1 if position[0] >= 1 else self.size[0] - 1
+            position[1] = (position[1] + 1) % self.size[1]
+        elif move == 7:
+            position[0] = position[0] - 1 if position[0] >= 1 else self.size[0] - 1
+            position[1] = position[1] - 1 if position[1] >= 1 else self.size[1] - 1
+        elif move == 3:
+            position[0] = (position[0] + 1) % self.size[0]
+            position[1] = (position[1] + 1) % self.size[1]
+        elif move == 5:
+            position[0] = (position[0] + 1) % self.size[0]
+            position[1] = position[1] - 1 if position[1] >= 1 else self.size[1] - 1
         return position, self.field[position[0], position[1]]

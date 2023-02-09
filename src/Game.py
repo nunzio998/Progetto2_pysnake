@@ -47,11 +47,10 @@ class Game:
         start = snake.get_head()  # posizione iniziale del serpente
         if 0 <= start[0] < size[0] and 0 <= start[1] < size[1]:  # se start è all'interno del campo da gioco
             what_in_start = field.get_value(start)
-            match what_in_start:
-                case FieldColor.FOOD.value:
-                    snake.eat(start)
-                case FieldColor.BLOCK.value:
-                    return True
+            if what_in_start == FieldColor.FOOD.value:
+                snake.eat(start)
+            elif what_in_start == FieldColor.BLOCK.value:
+                return True
             return False  # se in start c'è campo vuoto o cibo, si continua a giocare
         return True  # se start è al di fuori del campo da gioco
 
@@ -75,20 +74,19 @@ class Game:
             if dynamic_play:
                 Game.dynamic_play(self)
             # valuta l'esito della mossa e la fa eseguire al serpente
-            match elem:
-                case FieldColor.EMPTY.value:
-                    if self.snake.intersects(next_pos):
-                        return
-                    else:
-                        self.snake.move(next_pos)
-                case FieldColor.FOOD.value:
-                    if self.snake.intersects(next_pos):
-                        return
-                    else:
-                        self.snake.eat(next_pos)
-                        self.field.remove(next_pos)
-                case _:
+            if elem == FieldColor.EMPTY.value:
+                if self.snake.intersects(next_pos):
                     return
+                else:
+                    self.snake.move(next_pos)
+            elif elem == FieldColor.FOOD.value:
+                if self.snake.intersects(next_pos):
+                    return
+                else:
+                    self.snake.eat(next_pos)
+                    self.field.remove(next_pos)
+            else:
+                return
         return
 
     def get_game_state_2D(self):
